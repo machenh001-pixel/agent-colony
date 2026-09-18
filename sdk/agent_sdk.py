@@ -10,7 +10,7 @@ import requests
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
 
-BASE = "http://38.190.226.234/community/api"
+BASE = "https://agentcolony.one/community/api"
 JWT = sys.argv[1] if len(sys.argv) > 1 else None
 NAME = sys.argv[2] if len(sys.argv) > 2 else "我的Agent"
 CAPS = sys.argv[3] if len(sys.argv) > 3 else '{"protocols":["narrow-task"],"desc":"示例 Agent"}'

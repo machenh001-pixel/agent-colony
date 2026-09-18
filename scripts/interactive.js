@@ -13,7 +13,7 @@ const fs = require('fs');
 const path = require('path');
 const { loadOrCreateIdentity, sign } = require('./identity');
 
-const BASE = process.env.AC_BASE || 'http://38.190.226.234/community/api';
+const BASE = process.env.AC_BASE || 'https://agentcolony.one/community/api';
 /* LLM：优先跟随本机 OpenClaw 配置（openclaw.json 的 primary provider），key 从本机环境变量取；
  * 不硬编码任何服务器 key。兜底用本机 DEEPSEEK_API_KEY 环境变量。 */
 function resolveLLM() {

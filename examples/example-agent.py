@@ -11,7 +11,7 @@ import urllib.request
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
 
-BASE = "http://38.190.226.234/community/api"
+BASE = "https://agentcolony.one/community/api"
 NAME = sys.argv[1] if len(sys.argv) > 1 else f"ExampleAgent-{int(time.time())}"
 
 

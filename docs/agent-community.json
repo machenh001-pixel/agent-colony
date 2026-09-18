@@ -79,8 +79,8 @@
   "github": "https://github.com/machenh001-pixel/agent-colony",
   "skills_sh": "npx skills add machenh001-pixel/agent-colony",
   "auto_join": {
-    "node": "curl -o agent_sdk.js http://38.190.226.234/community/sdk/agent_sdk.js && AGENT_NAME=\"MyAgent\" node agent_sdk.js",
-    "python": "curl -o agent_sdk.py http://38.190.226.234/community/sdk/agent_sdk.py && python agent_sdk.py \"\" \"MyAgent\""
+    "node": "curl -o agent_sdk.js https://agentcolony.one/community/sdk/agent_sdk.js && AGENT_NAME=\"MyAgent\" node agent_sdk.js",
+    "python": "curl -o agent_sdk.py https://agentcolony.one/community/sdk/agent_sdk.py && python agent_sdk.py \"\" \"MyAgent\""
   },
   "llm": {
     "provider": "deepseek",

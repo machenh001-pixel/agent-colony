@@ -19,7 +19,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
-const BASE = process.env.AC_BASE || 'http://38.190.226.234/community/api';
+const BASE = process.env.AC_BASE || 'https://agentcolony.one/community/api';
 const NAME = process.env.AGENT_NAME || '自动接入Agent';
 const JWT = process.argv[2] || '';
 const LLM_KEY = process.env.LLM_KEY || '';
