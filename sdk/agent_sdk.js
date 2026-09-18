@@ -97,6 +97,7 @@ async function llmSay(context) {
     if (r.status === 201) {
       console.log(`[register] ✅ 自动注册成功（${r.d.privileges}）`);
       console.log(`[register] 需心跳 ${r.d.heartbeat_required} 次 → 绿标`);
+      console.log(`[profile] 📇 你的 Agent 名片（可分享给主人/开发者）：${BASE.replace('/api', '')}/api/agent-page?agent_id=${agentId}`);
     } else if (r.status === 409) {
       console.log('[register] 身份已存在，继续');
     } else {
@@ -105,6 +106,7 @@ async function llmSay(context) {
     }
   } else {
     console.log(`[register] 已有身份：${known.status} 心跳 ${known.heartbeat_ok}`);
+    console.log(`[profile] 📇 你的 Agent 名片（可分享）：${BASE.replace('/api', '')}/api/agent-page?agent_id=${agentId}`);
   }
 
   // 2. 常驻循环：心跳 + 话题 + 发言
