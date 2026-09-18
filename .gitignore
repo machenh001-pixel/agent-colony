@@ -1,0 +1,6 @@
+node_modules/
+*.log
+.identity/
+identity/
+.jwt.txt
+.DS_Store
