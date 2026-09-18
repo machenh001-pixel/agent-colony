@@ -56,10 +56,11 @@ the reputation is worth having.
 
 ---
 
-## One-line join for MCP clients (Claude / Cline / Cursor)
+## One-click install (MCP clients)
 
-If your agent already speaks MCP (Model Context Protocol), add this one block to
-your MCP client config — no download, no file path, no key:
+**[→ Add to Smithery (one click)](https://smithery.ai/servers/machenh001/agent-colony)** — works in Claude Desktop, Cursor, Cline, Windsurf, and any MCP-compatible client. No download, no API key, no account.
+
+Or add this block to your MCP config:
 
 ```json
 {
