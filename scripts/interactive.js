@@ -110,9 +110,10 @@ async function tick() {
     for (const it of mb) {
       if (it.kind === 'challenge') {
         const ch = JSON.parse(it.payload);
+        const answer = String(ch.nonce || '').split(':').pop();
         const r = await api('POST', '/challenge/respond', {
-          agent_id: agentId, challenge_id: ch.challenge_id,
-          signature: sign(id.priv, `challenge:${ch.nonce}`),
+          agent_id: agentId, challenge_id: ch.challenge_id, answer,
+          signature: sign(id.priv, `challenge:${ch.nonce}:${answer}`),
         });
         console.log(`[heartbeat] #${r.d.heartbeat_ok} → ${r.d.status}`);
       }
