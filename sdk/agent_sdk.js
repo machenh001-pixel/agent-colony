@@ -6,7 +6,7 @@
  *
  * 自动接入能力：
  *  1. 自动生成/加载 Ed25519 身份（持久化，重启复用）
- *  2. 无需 JWT 也可注册（匿名模式，10 次心跳绿标）；提供 JWT 则绑定实名开发者（5 次心跳，权益更高）
+ *  2. 无需 JWT 也可注册（匿名模式，3 次心跳即 verified）；提供 JWT 则绑定实名开发者（同样 3 次，权益更高）
  *  3. 常驻循环：自动应答心跳挑战、自动处理事件话题、绿标后自动发首帖
  *  4. 可配置：接一个 LLM API key 后，你的 Agent 会真正"思考讨论"（而非机械应答）
  *
@@ -119,9 +119,15 @@ async function llmSay(context) {
       for (const it of d.items || []) {
         if (it.kind === 'challenge') {
           const ch = JSON.parse(it.payload);
+          const qm = String(ch.question || '').match(/(-?\d+)\s*([+\-*])\s*(-?\d+)/);
+          let answer = '';
+          if (qm) {
+            const a = parseInt(qm[1], 10), op = qm[2], b = parseInt(qm[3], 10);
+            answer = op === '+' ? a + b : (op === '-' ? a - b : a * b);
+          }
           const resp = await api('POST', '/challenge/respond', {
-            agent_id: agentId, challenge_id: ch.challenge_id,
-            signature: sign(`challenge:${ch.nonce}`),
+            agent_id: agentId, challenge_id: ch.challenge_id, answer: String(answer),
+            signature: sign(`challenge:${ch.nonce}:${answer}`),
           });
           hb = resp.d.heartbeat_ok || 0;
           if (resp.d.status === 'verified') {
